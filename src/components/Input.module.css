@@ -1,0 +1,28 @@
+.label {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.frame {
+  display: flex;
+  width: 100%;
+}
+
+.input {
+  flex: 1 1 auto;
+  line-height: 44px;
+  padding: 0 4px 0 13px;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  border: solid 1px #ddd;
+  border-radius: 5px;
+}
+
+.helpText {
+  color: rgb(148, 148, 148);
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 8px;
+}

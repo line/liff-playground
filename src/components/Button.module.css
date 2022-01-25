@@ -1,0 +1,35 @@
+.button {
+  padding: 4px 12px;
+  outline: none;
+  border-radius: 3px;
+  background-color: #06c755;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.button:active {
+  opacity: 0.5;
+}
+
+.outlined {
+  color: #06c755;
+  background-color: #ffffff;
+  border: #06c755 1px solid;
+}
+
+.outlined:hover {
+  opacity: 1;
+  background: rgb(244, 246, 247);
+}
+
+.outlined:active {
+  opacity: 1;
+  background: rgb(234, 236, 237);
+}

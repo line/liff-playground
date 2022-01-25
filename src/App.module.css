@@ -1,0 +1,21 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.liffIdBox {
+  margin: 40px 0;
+  width: 250px;
+}
+
+@media only screen and (max-width: 375px) {
+  .container {
+    width: auto;
+    padding: 0 15px;
+  }
+}

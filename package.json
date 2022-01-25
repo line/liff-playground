@@ -1,0 +1,59 @@
+{
+  "name": "liff-playground",
+  "version": "2.0.0",
+  "description": "This is a small web application that demonstrates the basic functionality of the [LINE Front-end Framework (LIFF)](https://developers.line.biz/en/docs/liff/overview/).",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/line/liff-playground"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@line/liff": "2.15.0",
+    "@testing-library/jest-dom": "5.14.1",
+    "@testing-library/react": "11.2.7",
+    "@testing-library/user-event": "12.8.3",
+    "@types/jest": "26.0.24",
+    "@types/node": "12.20.25",
+    "@types/react": "17.0.22",
+    "@types/react-dom": "17.0.11",
+    "batch": "0.6.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "4.4.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "4.31.2",
+    "@typescript-eslint/parser": "4.31.2",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-react": "7.27.1",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "prettier": "2.5.1"
+  }
+}
