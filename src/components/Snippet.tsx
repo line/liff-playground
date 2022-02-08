@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Button from './Button'
 import Input from './Input'
 import styles from './Snippet.module.css'
