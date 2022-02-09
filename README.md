@@ -47,11 +47,16 @@ This will start it up. When you access the URL shown in the terminal, you can se
 
 ### Deploy to a server
 
-This section shows an example of deploying LIFF Playground to [Netlify](https://www.netlify.com/). You can deploy it from the Deploy button below.
+This section shows an example of deploying LIFF Playground to [Netlify](https://www.netlify.com/). Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/) beforehand.
 
-[![](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/line/liff-playground)
+The following commands will build the source code and deploy it to Netlify.
 
-After executing the above, the LIFF Playground will be deployed on Netlify. The next step is to get the URL of the deployed page.
+```bash
+$ netlify build
+$ netlify deploy --prod
+```
+
+After executing the above, the LIFF Playground will be deployed on Netlify. And the URL of the deployed page will be displayed in the terminal.
 
 Then register this URL on the [LINE Developers Console](https://developers.line.biz/console/). Register this URL as the `Endpoint URL` in the LIFF app settings page. See [Adding a LIFF app to your channel](https://developers.line.biz/en/docs/liff/registering-liff-apps/) for instructions on how to register.
 
