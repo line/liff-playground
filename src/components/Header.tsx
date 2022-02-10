@@ -4,6 +4,10 @@ import styles from './Header.module.css'
 import Button from './Button'
 
 export default function Header() {
+  const openGitHub = () => {
+    window.open(`https://github.com/line/liff-playground`, '_blank')
+  }
+
   const openInApp = () => {
     window.open(
       `https://line.me/R/app/${process.env.REACT_APP_LIFF_ID}`,
@@ -19,6 +23,15 @@ export default function Header() {
             <h1>LIFF Playground</h1>
           </div>
           <div className={styles.right}>
+            <div className={styles.gitHubButton}>
+              <Button
+                appearance="outlined"
+                variant="primary"
+                size="S"
+                onClick={openGitHub}>
+                GitHub
+              </Button>
+            </div>
             {!liff.isInClient() && (
               <Button variant="primary" size="S" onClick={openInApp}>
                 Open In LINE

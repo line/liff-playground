@@ -22,9 +22,19 @@
   font-size: 20px;
 }
 
+.gitHubButton {
+  margin-right: 4px;
+}
+
 @media only screen and (max-width: 375px) {
   .container {
     width: auto;
     padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .gitHubButton {
+    display: none;
   }
 }
