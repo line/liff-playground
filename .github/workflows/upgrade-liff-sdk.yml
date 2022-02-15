@@ -20,7 +20,6 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.PAT }}
           commit-message: 'chore: upgrade LIFF SDK'
           title: 'chore: upgrade LIFF SDK'
           body: |
