@@ -2,10 +2,8 @@ name: Build and Deploy to Netlify
 
 on:
   push:
-  pull_request:
     branches:
       - master
-    types: [closed]
 
 jobs:
   build:
