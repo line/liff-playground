@@ -20,7 +20,7 @@ jobs:
 
       - name: Run lint task
         run: |
-          npm run lnt
+          npm run lint
 
       - name: Run build task
         run: |
