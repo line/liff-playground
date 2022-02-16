@@ -2,20 +2,29 @@ name: Upgrade LIFF SDK
 
 on:
   schedule:
-    - cron: '0 10 * * 1'
+    - cron: '0 0 1 1 0'
 
 jobs:
   update-dep:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
+          node-version: 'lts/*'
+
       - name: Check and Update dependencies
         run: |
           npx -p npm-check-updates ncu -u @line/liff
           npm install
+
+      - name: Run lint task
+        run: |
+          npm run lnt
+
+      - name: Run build task
+        run: |
+          npm run build
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
