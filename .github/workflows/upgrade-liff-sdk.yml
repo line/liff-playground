@@ -1,0 +1,33 @@
+name: Upgrade LIFF SDK
+
+on:
+  schedule:
+    - cron: '0 0 1 1 0'
+
+jobs:
+  update-dep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+
+      - name: Check and Update dependencies
+        run: |
+          npx -p npm-check-updates ncu -u @line/liff
+          npm install
+
+      - name: Run build task
+        run: |
+          npm run build
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'chore: upgrade LIFF SDK'
+          title: 'chore: upgrade LIFF SDK'
+          body: |
+            - There is a new version of LIFF SDK, merge this PR to upgrade it.
+
+          branch: update-liff-sdk
