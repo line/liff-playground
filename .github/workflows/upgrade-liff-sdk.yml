@@ -30,4 +30,4 @@ jobs:
           body: |
             - There is a new version of LIFF SDK, merge this PR to upgrade it.
 
-          branch: update-liff-dsk
+          branch: update-liff-sdk
