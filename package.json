@@ -24,9 +24,9 @@
     "typescript": "4.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "eject": "react-scripts eject"
   },
@@ -49,9 +49,9 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^6.4.3",
     "@typescript-eslint/eslint-plugin": "4.31.2",
     "@typescript-eslint/parser": "4.31.2",
-    "crypto-js": "^4.1.1",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-react": "7.27.1",
