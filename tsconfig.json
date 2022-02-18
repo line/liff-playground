@@ -14,7 +14,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "crypto": [
+        "node_modules/crypto-js"
+      ]
+    }
   },
   "include": ["src"]
 }
