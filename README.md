@@ -27,7 +27,7 @@ To start the LIFF Playground, you need to obtain a LIFF ID from the [LINE Develo
 Set the LIFF ID obtained in the above procedure as an environment variable. Open `.env` and set the LIFF ID.
 
 ````
-REACT_APP_LIFF_ID="Your LIFF ID"
+VITE_LIFF_ID="Your LIFF ID"
 ````
 
 ## Usage
@@ -39,8 +39,8 @@ This section shows two ways to run it on local and deploy it on a server.
 To run the LIFF Playground on local, first install the dependent packages. Then run the application.
 
 ```bash
-$ npm install
-$ npm start
+$ yarn
+$ yarn dev
 ```
 
 This will start it up. When you access the URL shown in the terminal, you can see the LIFF Playground.

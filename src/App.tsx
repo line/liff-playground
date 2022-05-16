@@ -20,7 +20,7 @@ function App() {
           <Input
             label="CURRENT LIFF ID"
             readonly
-            value={process.env.REACT_APP_LIFF_ID || ''}
+            value={import.meta.env.VITE_LIFF_ID || ''}
           />
         </div>
         <h1>Client APIs</h1>
@@ -191,6 +191,7 @@ function App() {
           runner={async (messages) => {
             return await liff.sendMessages(JSON.parse(messages))
           }}
+          inClientOnly={true}
         />
         <Snippet
           apiName="liff.openWindow"
@@ -231,6 +232,7 @@ function App() {
           runner={async (options) => {
             return await liff.shareTargetPicker(JSON.parse(options))
           }}
+          loginRequired={true}
         />
         <Snippet
           apiName="liff.scanCodeV2"
@@ -244,6 +246,7 @@ function App() {
               return 'scanCode API is not available on this platform'
             }
           }}
+          loginRequired={true}
         />
         <Snippet
           apiName="liff.closeWindow"
