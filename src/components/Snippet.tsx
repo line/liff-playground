@@ -14,12 +14,16 @@ interface SippetProps {
   useTextareaForResponse?: boolean
   skipAutoRun?: boolean
   hideResponse?: boolean
+  loginRequired?: boolean
+  inClientOnly?: boolean
   runner: (requestPayload?: any) => Promise<any>
 }
 
 interface RunnerError extends Error {
   message: string
 }
+
+const primaryRed = '#eb4e3d';
 
 export default function Snippet({
   apiName,
@@ -31,6 +35,8 @@ export default function Snippet({
   needRequestPayload,
   useTextareaForResponse,
   defaultRequestPayload,
+  loginRequired,
+  inClientOnly,
 }: SippetProps) {
   const [response, setResponse] = useState('')
   const [payload, setPayload] = useState(defaultRequestPayload || '')
@@ -60,7 +66,7 @@ export default function Snippet({
     <div className={styles.snippet}>
       <div className={styles.head}>
         <h2 className={styles.title}>
-          {apiName} <Tag>≥{version}</Tag>
+          {apiName} <Tag>≥{version}</Tag> {loginRequired && <Tag backgroundColor={primaryRed}>Login Required</Tag>} {inClientOnly && <Tag backgroundColor={primaryRed}>LINE Client only</Tag>}
         </h2>
         <div className={styles.action}>
           <Button

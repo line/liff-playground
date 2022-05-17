@@ -18,6 +18,11 @@
   align-items: center;
 }
 
+.left a {
+  text-decoration: none;
+  color: #000;
+}
+
 .header h1 {
   font-size: 20px;
 }

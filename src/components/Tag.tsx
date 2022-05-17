@@ -2,9 +2,10 @@ import React from 'react'
 import styles from './Tag.module.css'
 
 interface TagProps {
-  children: React.ReactNode
+  children: React.ReactNode,
+  backgroundColor?: string,
 }
 
-export default function Tag({ children }: TagProps) {
-  return <span className={styles.tag}>{children}</span>
+export default function Tag({ children, backgroundColor = '#06c755' }: TagProps) {
+  return <span className={styles.tag} style={{ backgroundColor }}>{children}</span>
 }

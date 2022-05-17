@@ -16,6 +16,7 @@ export default function TextArea({
   value,
   rows,
   onChange,
+  readonly = false,
 }: TextAreaProps) {
   return (
     <>
@@ -25,6 +26,7 @@ export default function TextArea({
           className={styles.textarea}
           value={value}
           rows={rows}
+          readOnly={readonly}
           onChange={onChange}
         />
       </div>

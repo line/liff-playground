@@ -10,7 +10,7 @@ export default function Header() {
 
   const openInApp = () => {
     window.open(
-      `https://line.me/R/app/${process.env.REACT_APP_LIFF_ID}`,
+      `https://line.me/R/app/${import.meta.env.VITE_LIFF_ID}`,
       '_blank'
     )
   }
@@ -20,7 +20,9 @@ export default function Header() {
       <div className={styles.headerContainer}>
         <div className={styles.header}>
           <div className={styles.left}>
-            <h1>LIFF Playground</h1>
+            <a href='/'>
+              <h1>LIFF Playground</h1>
+            </a>
           </div>
           <div className={styles.right}>
             <div className={styles.gitHubButton}>
