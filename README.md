@@ -6,12 +6,14 @@ This is a web application that allows you to try out the basic features of the [
 
 ## Table of contents
 
-* [Preparation](#preparation)
-  1. [Get a LIFF ID](#1-get-a-liff-id)
-  1. [Set the LIFF ID](#2-set-the-liff-id)
-* [Usage](#usage)
-  * [Run on local](#run-on-local)
-  * [Deploy to a server](#deploy-to-a-server)
+- [LIFF Playground](#liff-playground)
+  - [Table of contents](#table-of-contents)
+  - [Preparation](#preparation)
+    - [1. Get a LIFF ID](#1-get-a-liff-id)
+    - [2. Set the LIFF ID](#2-set-the-liff-id)
+  - [Usage](#usage)
+    - [Run on local](#run-on-local)
+    - [Deploy to a server](#deploy-to-a-server)
 
 ## Preparation
 
@@ -44,6 +46,12 @@ $ npm start
 ```
 
 This will start it up. When you access the URL shown in the terminal, you can see the LIFF Playground.
+
+Incidentally, the LIFF application endpoint requires HTTPS. To start the local server with HTTPS, run the following command instead of `npm start`.
+
+```bash
+$ npm run start:https
+```
 
 ### Deploy to a server
 
