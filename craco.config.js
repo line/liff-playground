@@ -2,7 +2,13 @@
 const devcert = require('devcert')
 
 module.exports = async () => {
-  const { key, cert } = await devcert.certificateFor('localhost')
+  let key = undefined
+  let cert = undefined
+  if (process.env.HTTPS === 'true') {
+    const certs = await devcert.certificateFor('localhost')
+    key = certs.key
+    cert = certs.cert
+  }
 
   return {
     webpack: {
@@ -15,9 +21,11 @@ module.exports = async () => {
       },
     },
     devServer: (devServerConfig) => {
-      devServerConfig.https = {
-        key,
-        cert,
+      if (process.env.HTTPS === 'true') {
+        devServerConfig.https = {
+          key,
+          cert,
+        }
       }
       return devServerConfig
     },
