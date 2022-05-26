@@ -9,6 +9,7 @@
   "version": "3.0.1",
   "scripts": {
     "dev": "vite",
+    "dev:https": "HTTPS=true vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{ts,tsx}\""
@@ -24,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "@vitejs/plugin-react": "^1.0.7",
+    "devcert": "1.2.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",

@@ -45,6 +45,12 @@ $ yarn dev
 
 This will start it up. When you access the URL shown in the terminal, you can see the LIFF Playground.
 
+Incidentally, the LIFF application endpoint requires HTTPS. To start the local server with HTTPS, run the following command instead of `yarn dev`.
+
+```bash
+$ yarn dev:https
+```
+
 ### Deploy to a server
 
 This section shows an example of deploying LIFF Playground to [Netlify](https://www.netlify.com/). Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/) beforehand.
