@@ -4,7 +4,7 @@ import Input from './Input'
 import styles from './Snippet.module.css'
 import Tag from './Tag'
 import TextArea from './TextArea'
-import { FilterContext } from '../Context'
+import { FilterContext, FilterTypes } from '../Context'
 
 interface SippetProps {
   apiName: string
@@ -73,9 +73,9 @@ export default function Snippet({
     <FilterContext.Consumer>
       {
         (filter) => 
-          (filter === 'ALL' 
-          || (filter === 'LIFF' && isInLIFF) 
-          || (filter === 'MINI' && isInMINI))
+          (filter === FilterTypes.ALL 
+          || (filter === FilterTypes.LIFF && isInLIFF) 
+          || (filter === FilterTypes.MINI && isInMINI))
           && <div className={styles.snippet}>
           <div className={styles.head}>
             <h2 className={styles.title}>
