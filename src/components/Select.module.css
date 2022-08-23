@@ -49,7 +49,7 @@ select::-ms-expand {
   color: white;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 480px) {
   .select {
     margin: 10px 0 0 0;
     width: 120px;

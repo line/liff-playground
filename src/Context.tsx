@@ -1,5 +1,11 @@
 import React from 'react'
 
-export type APITypes = 'ALL' | 'LIFF' | 'MINI'
+export const FilterTypes = {
+  ALL: 'ALL',
+  LIFF: 'LIFF',
+  MINI: 'MINI'
+} as const
 
-export const FilterContext = React.createContext<APITypes>('ALL')
+export type FilterType = keyof typeof FilterTypes
+
+export const FilterContext = React.createContext<FilterType>(FilterTypes.ALL)

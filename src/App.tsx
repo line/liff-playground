@@ -5,10 +5,16 @@ import Header from './components/Header'
 import Snippet from './components/Snippet'
 import Input from './components/Input'
 import Select from './components/Select'
-import { FilterContext, APITypes } from './Context'
+import { FilterContext, FilterTypes, FilterType } from './Context'
+
+const getFilterOptions = () => {
+  return Object.entries(FilterTypes).map(([value, label]) => ({
+    label, value
+  }))
+}
 
 function App() {
-  const [filter, setFilter] = useState<APITypes>('ALL')
+  const [filter, setFilter] = useState<FilterType>(FilterTypes.ALL)
   let isLoggedIn = false
   try {
     isLoggedIn = liff.isLoggedIn()
@@ -24,9 +30,13 @@ function App() {
             readonly
             value={'LIFF ID: ' + import.meta.env.VITE_LIFF_ID || ''}
           />
-          <Select handleChange={(e) => {
-            setFilter(e.target.value as APITypes)
-          }}/>
+          <Select
+            value={filter}
+            options={getFilterOptions()}
+            handleChange={(e) => {
+              setFilter(e.target.value as FilterType)
+            }}
+          />
         </div>
         <h1>Client APIs</h1>
         {!isLoggedIn ? (
@@ -277,7 +287,7 @@ function App() {
         <Snippet
           apiName="liff.permission.requestAll"
           version="2.13.0"
-          docUrl="https://developers.line.biz/en/reference/liff/#permission-requestAll"
+          docUrl="https://developers.line.biz/en/reference/liff/#permission-request-all"
           needRequestPayload={true}
           defaultRequestPayload={'profile'}
           skipAutoRun={true}
@@ -291,7 +301,7 @@ function App() {
           version="2.18.0"
           docUrl="https://developers.line.biz/en/reference/liff/#permanent-link-create-url-by"
           needRequestPayload={true}
-          defaultRequestPayload={'https://liff-playground.netlify.app'}
+          defaultRequestPayload={'https://liff-playground.netlify.app?foo=bar'}
           runner={async (url) => {
             return await liff.permanentLink.createUrlBy(url)
           }}
