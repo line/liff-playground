@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import liff from '@line/liff'
 import styles from './App.module.css'
 import Header from './components/Header'
 import Snippet from './components/Snippet'
 import Input from './components/Input'
+import Select from './components/Select'
+import { FilterContext, FilterTypes, FilterType } from './Context'
+
+const getFilterOptions = () => {
+  return Object.entries(FilterTypes).map(([value, label]) => ({
+    label, value
+  }))
+}
 
 function App() {
+  const [filter, setFilter] = useState<FilterType>(FilterTypes.ALL)
   let isLoggedIn = false
   try {
     isLoggedIn = liff.isLoggedIn()
@@ -13,14 +22,20 @@ function App() {
     console.log(e)
   }
   return (
-    <>
+    <FilterContext.Provider value={filter}>
       <Header />
       <div className={styles.container}>
         <div className={styles.liffIdBox}>
           <Input
-            label="CURRENT LIFF ID"
             readonly
-            value={import.meta.env.VITE_LIFF_ID || ''}
+            value={'LIFF ID: ' + import.meta.env.VITE_LIFF_ID || ''}
+          />
+          <Select
+            value={filter}
+            options={getFilterOptions()}
+            handleChange={(e) => {
+              setFilter(e.target.value as FilterType)
+            }}
           />
         </div>
         <h1>Client APIs</h1>
@@ -258,9 +273,43 @@ function App() {
             return await liff.closeWindow()
           }}
         />
+        <Snippet
+          apiName="liff.permission.query"
+          version="2.13.0"
+          docUrl="https://developers.line.biz/en/reference/liff/#permission-query"
+          needRequestPayload={true}
+          defaultRequestPayload={'profile'}
+          isInLIFF={false}
+          runner={async (permission) => {
+            return await liff.permission.query(permission)
+          }}
+        />
+        <Snippet
+          apiName="liff.permission.requestAll"
+          version="2.13.0"
+          docUrl="https://developers.line.biz/en/reference/liff/#permission-request-all"
+          needRequestPayload={true}
+          defaultRequestPayload={'profile'}
+          skipAutoRun={true}
+          isInLIFF={false}
+          runner={async () => {
+            return await liff.permission.requestAll()
+          }}
+        />
+        <Snippet
+          apiName="liff.permanentLink.createUrlBy"
+          version="2.18.0"
+          docUrl="https://developers.line.biz/en/reference/liff/#permanent-link-create-url-by"
+          needRequestPayload={true}
+          defaultRequestPayload={'https://liff-playground.netlify.app?foo=bar'}
+          runner={async (url) => {
+            return await liff.permanentLink.createUrlBy(url)
+          }}
+        />
       </div>
-    </>
+    </FilterContext.Provider>
   )
 }
+
 
 export default App
