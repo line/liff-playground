@@ -1,9 +1,10 @@
 .tag {
+  display: inline-block;
   padding: 2px 6px;
   font-size: 12px;
   font-weight: 400;
   border-radius: 18px;
   line-height: 18px;
   color: #ffffff;
-  margin-right: 6px;
+  margin-left: 5px;
 }
