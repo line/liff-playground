@@ -17,29 +17,27 @@ export default function Header() {
 
   return (
     <div className={styles.headerContainer}>
-      <div className={styles.headerContainer}>
-        <div className={styles.header}>
-          <div className={styles.left}>
-            <a href='/'>
-              <h1>LIFF Playground</h1>
-            </a>
+      <div className={styles.header}>
+        <div className={styles.left}>
+          <a href='/'>
+            <h1>LIFF Playground</h1>
+          </a>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.gitHubButton}>
+            <Button
+              appearance="outlined"
+              variant="primary"
+              size="S"
+              onClick={openGitHub}>
+              GitHub
+            </Button>
           </div>
-          <div className={styles.right}>
-            <div className={styles.gitHubButton}>
-              <Button
-                appearance="outlined"
-                variant="primary"
-                size="S"
-                onClick={openGitHub}>
-                GitHub
-              </Button>
-            </div>
-            {!liff.isInClient() && (
-              <Button variant="primary" size="S" onClick={openInApp}>
-                Open In LINE
-              </Button>
-            )}
-          </div>
+          {!liff.isInClient() && (
+            <Button variant="primary" size="S" onClick={openInApp}>
+              Open In LINE
+            </Button>
+          )}
         </div>
       </div>
     </div>
