@@ -1,5 +1,7 @@
 select {
   /* Reset Select */
+  -moz-appearance: none; 
+  -webkit-appearance: none; 
   appearance: none;
   outline: 0;
   border: 0;
