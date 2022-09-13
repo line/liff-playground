@@ -26,8 +26,8 @@ select::-ms-expand {
   position: relative;
   display: flex;
   width: 20em;
-  height: 3em;
-  border-radius: .25em;
+  height: 48px;
+  border-radius: 5px;
   overflow: hidden;
   margin-left: 10px;
   width: 180px;
@@ -41,7 +41,6 @@ select::-ms-expand {
   right: 0;
   padding: 1em;
   color: white;
-  background-color: #06c755;
   transition: .25s all ease;
   pointer-events: none;
 }
