@@ -172,6 +172,7 @@ function App() {
           version="2.0"
           docUrl="https://developers.line.biz/en/reference/liff/#get-friendship"
           useTextareaForResponse={true}
+          skipAutoRun={true}
           runner={async () => {
             return JSON.stringify(await liff.getFriendship(), null, 4)
           }}
