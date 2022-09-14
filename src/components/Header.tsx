@@ -16,7 +16,7 @@ export default function Header() {
   }
 
   return (
-    <div className={styles.headerContainer}>
+    !liff.isInClient() ? (<div className={styles.headerContainer}>
       <div className={styles.header}>
         <div className={styles.left}>
           <a href='/'>
@@ -33,13 +33,11 @@ export default function Header() {
               GitHub
             </Button>
           </div>
-          {!liff.isInClient() && (
-            <Button variant="primary" size="S" onClick={openInApp}>
-              Open In LINE
-            </Button>
-          )}
+          <Button variant="primary" size="S" onClick={openInApp}>
+            Open In LINE
+          </Button>
         </div>
       </div>
-    </div>
+    </div>) : <></>
   )
 }
