@@ -66,7 +66,7 @@ export default function Snippet({
   }, [runner, setResponse, payload])
 
   useEffect(() => {
-    if (!skipAutoRun) callRunner()
+    // if (!skipAutoRun) callRunner()
   }, [skipAutoRun, callRunner])
 
   return (
@@ -79,7 +79,7 @@ export default function Snippet({
           && <div className={styles.snippet}>
           <div className={styles.head}>
             <h2 className={styles.title}>
-              {apiName}
+              <span className={styles.text}>{apiName}</span>
               <Tag>≥{version}</Tag>
               {loginRequired && <Tag backgroundColor={primaryRed}>Login Required</Tag>} {inClientOnly && <Tag backgroundColor={primaryRed}>LINE Client only</Tag>}
               {isInLIFF && <Tag backgroundColor={primaryBlue}>LIFF</Tag>}
