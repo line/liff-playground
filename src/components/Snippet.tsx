@@ -66,7 +66,7 @@ export default function Snippet({
   }, [runner, setResponse, payload])
 
   useEffect(() => {
-    // if (!skipAutoRun) callRunner()
+    if (!skipAutoRun) callRunner()
   }, [skipAutoRun, callRunner])
 
   return (
