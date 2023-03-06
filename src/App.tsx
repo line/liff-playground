@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Snippet from './components/Snippet'
 import Input from './components/Input'
 import { FilterContext, FilterTypes } from './Context'
+import qrCode from './qr-code.png'
 
 const isMINI = new URLSearchParams(location.search).has('mini')
 const filter = isMINI ? FilterTypes.MINI : FilterTypes.LIFF
@@ -25,6 +26,7 @@ function App() {
             readonly
             value={'LIFF URL: https://liff.line.me/' + import.meta.env.VITE_LIFF_ID || ''}
           />
+          <img src={qrCode} className={styles.qrCode} />
         </div>
         <h1>Client APIs</h1>
         {!isLoggedIn ? (
