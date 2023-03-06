@@ -73,9 +73,7 @@ export default function Snippet({
     <FilterContext.Consumer>
       {
         (filter) => 
-          (filter === FilterTypes.ALL 
-          || (filter === FilterTypes.LIFF && isInLIFF) 
-          || (filter === FilterTypes.MINI && isInMINI))
+          ((filter === FilterTypes.LIFF && isInLIFF) || (filter === FilterTypes.MINI && isInMINI))
           && <div className={styles.snippet}>
           <div className={styles.head}>
             <h2 className={styles.title}>

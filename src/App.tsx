@@ -1,20 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import liff from '@line/liff'
 import styles from './App.module.css'
 import Header from './components/Header'
 import Snippet from './components/Snippet'
 import Input from './components/Input'
-import Select from './components/Select'
-import { FilterContext, FilterTypes, FilterType } from './Context'
+import { FilterContext, FilterTypes } from './Context'
 
-const getFilterOptions = () => {
-  return Object.entries(FilterTypes).map(([value, label]) => ({
-    label, value
-  }))
-}
+const isMINI = new URLSearchParams(location.search).has('mini')
+const filter = isMINI ? FilterTypes.MINI : FilterTypes.LIFF
 
 function App() {
-  const [filter, setFilter] = useState<FilterType>(FilterTypes.ALL)
   let isLoggedIn = false
   try {
     isLoggedIn = liff.isLoggedIn()
@@ -29,13 +24,6 @@ function App() {
           <Input
             readonly
             value={'LIFF ID: ' + import.meta.env.VITE_LIFF_ID || ''}
-          />
-          <Select
-            value={filter}
-            options={getFilterOptions()}
-            handleChange={(e) => {
-              setFilter(e.target.value as FilterType)
-            }}
           />
         </div>
         <h1>Client APIs</h1>
