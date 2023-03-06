@@ -23,7 +23,7 @@ function App() {
         <div className={styles.liffIdBox}>
           <Input
             readonly
-            value={'LIFF ID: ' + import.meta.env.VITE_LIFF_ID || ''}
+            value={'LIFF URL: https://liff.line.me/' + import.meta.env.VITE_LIFF_ID || ''}
           />
         </div>
         <h1>Client APIs</h1>
