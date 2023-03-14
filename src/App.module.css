@@ -12,7 +12,13 @@ body {
   margin: 40px 0;
   width: 400px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qrCode {
+  max-width: 128px;
+  height: auto;
 }
 
 @media only screen and (max-width: 375px) {
@@ -25,7 +31,7 @@ body {
 
 @media only screen and (max-width: 480px) {
   .liffIdBox {
-    width: 250px;
+    width: auto;
     display: block;
   }
 }
