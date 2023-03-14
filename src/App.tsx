@@ -24,7 +24,7 @@ function App() {
         <div className={styles.liffIdBox}>
           <Input
             readonly
-            value={'LIFF URL: https://liff.line.me/' + import.meta.env.VITE_LIFF_ID || ''}
+            value={`LIFF URL: https://liff.line.me/${import.meta.env.VITE_LIFF_ID.toString()}`}
           />
           <img src={qrCode} className={styles.qrCode} />
         </div>
