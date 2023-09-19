@@ -298,6 +298,18 @@ function App() {
             return await liff.permanentLink.createUrlBy(url)
           }}
         />
+        <Snippet
+          apiName="liff.i18n.setLang"
+          version="2.21.0"
+          docUrl="https://developers.line.biz/ja/reference/liff/#i18n-set-lang"
+          needRequestPayload={true}
+          skipAutoRun={true}
+          hideResponse={true}
+          defaultRequestPayload={'en'}
+          runner={async (lang) => {
+            return await liff.i18n.setLang(lang)
+          }}
+        />
       </div>
     </FilterContext.Provider>
   )
