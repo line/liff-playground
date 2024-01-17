@@ -1,9 +1,5 @@
 import React from 'react'
-
-export const FilterTypes = {
-  LIFF: 'LIFF',
-  MINI: 'MINI'
-} as const
+import { FilterTypes } from './FilterTypes'
 
 export type FilterType = keyof typeof FilterTypes
 
