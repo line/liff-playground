@@ -6,6 +6,7 @@ import Snippet from './components/Snippet'
 import Input from './components/Input'
 import { FilterContext, FilterTypes } from './Context'
 import qrCode from './qr-code.png'
+import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST } from './constants'
 
 const isMINI = new URLSearchParams(location.search).has('mini')
 const filter = isMINI ? FilterTypes.MINI : FilterTypes.LIFF
@@ -225,16 +226,8 @@ function App() {
           docUrl="https://developers.line.biz/en/reference/liff/#share-target-picker"
           needRequestPayload={true}
           hideResponse={true}
-          defaultRequestPayload={JSON.stringify(
-            [
-              {
-                type: 'text',
-                text: 'Hello, World!',
-              },
-            ],
-            null,
-            4
-          )}
+          defaultRequestPayload={SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST[0].value}
+          pulldownOptions={SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST}
           skipAutoRun={true}
           runner={async (options) => {
             return await liff.shareTargetPicker(JSON.parse(options))
