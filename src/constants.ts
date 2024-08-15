@@ -18,16 +18,16 @@ export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
     label: 'image',
     value: {
       type: 'image',
-      originalContentUrl: 'https://example.com/original.jpg',
-      previewImageUrl: 'https://example.com/preview.jpg',
+      originalContentUrl: `${location.href}assets/stp_image.png`,
+      previewImageUrl: `${location.href}assets/stp_image.png`,
     },
   },
   {
     label: 'video',
     value: {
       type: 'video',
-      originalContentUrl: 'https://example.com/original.mp4',
-      previewImageUrl: 'https://example.com/preview.jpg',
+      originalContentUrl: `${location.href}assets/stp_video.mp4`,
+      previewImageUrl: `${location.href}assets/stp_video.mp4`,
       trackingId: 'track-id',
     },
   },
@@ -35,7 +35,7 @@ export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
     label: 'audio',
     value: {
       type: 'audio',
-      originalContentUrl: 'https://example.com/original.m4a',
+      originalContentUrl: `${location.href}assets/stp_audio.mp3`,
       duration: 60000,
     },
   },
