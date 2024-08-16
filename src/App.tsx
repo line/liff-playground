@@ -230,7 +230,7 @@ function App() {
           pulldownOptions={SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST}
           skipAutoRun={true}
           runner={async (options) => {
-            return await liff.shareTargetPicker(JSON.parse(options))
+            return await liff.shareTargetPicker([JSON.parse(options)])
           }}
           loginRequired={true}
         />
