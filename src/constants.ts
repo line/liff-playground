@@ -1,3 +1,4 @@
+const base = new URL(location.href).origin;
 export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
   {
     label: 'text',
@@ -18,16 +19,16 @@ export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
     label: 'image',
     value: {
       type: 'image',
-      originalContentUrl: `${location.href}assets/stp_image.png`,
-      previewImageUrl: `${location.href}assets/stp_image.png`,
+      originalContentUrl: `${base}/assets/stp_image.png`,
+      previewImageUrl: `${base}/assets/stp_image.png`,
     },
   },
   {
     label: 'video',
     value: {
       type: 'video',
-      originalContentUrl: `${location.href}assets/stp_video.mp4`,
-      previewImageUrl: `${location.href}assets/stp_video.mp4`,
+      originalContentUrl: `${base}/assets/stp_video.mp4`,
+      previewImageUrl: `${base}/assets/stp_video.mp4`,
       trackingId: 'track-id',
     },
   },
@@ -35,7 +36,7 @@ export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
     label: 'audio',
     value: {
       type: 'audio',
-      originalContentUrl: `${location.href}assets/stp_audio.mp3`,
+      originalContentUrl: `${base}/assets/stp_audio.mp3`,
       duration: 60000,
     },
   },
