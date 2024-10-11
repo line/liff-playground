@@ -19,8 +19,8 @@ export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
     label: 'image',
     value: {
       type: 'image',
-      originalContentUrl: `${base}/assets/stp_image.png`,
-      previewImageUrl: `${base}/assets/stp_image.png`,
+      originalContentUrl: `${base}/assets/stp_image.jpg`,
+      previewImageUrl: `${base}/assets/stp_image.jpg`,
     },
   },
   {
