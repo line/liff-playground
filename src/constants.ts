@@ -28,7 +28,7 @@ export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
     value: {
       type: 'video',
       originalContentUrl: `${base}/assets/stp_video.mp4`,
-      previewImageUrl: `${base}/assets/stp_video.mp4`,
+      previewImageUrl: `${base}/assets/stp_image.jpg`,
       trackingId: 'track-id',
     },
   },
