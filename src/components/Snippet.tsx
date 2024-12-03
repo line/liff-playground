@@ -6,6 +6,7 @@ import Tag from './Tag'
 import TextArea from './TextArea'
 import { FilterContext } from '../Context'
 import { FilterTypes } from '../FilterTypes'
+import Pulldown from './Pulldown'
 
 interface SippetProps {
   apiName: string
@@ -13,6 +14,7 @@ interface SippetProps {
   docUrl: string
   needRequestPayload?: boolean
   defaultRequestPayload?: string
+  pulldownOptions?: { label: string; value: string }[]
   useTextareaForResponse?: boolean
   skipAutoRun?: boolean
   hideResponse?: boolean
@@ -27,9 +29,9 @@ interface RunnerError extends Error {
   message: string
 }
 
-const primaryRed = '#eb4e3d';
-const primaryBlue = '#6fedd6';
-const primaryOrange = '#ff9551';
+const primaryRed = '#eb4e3d'
+const primaryBlue = '#6fedd6'
+const primaryOrange = '#ff9551'
 
 export default function Snippet({
   apiName,
@@ -41,10 +43,11 @@ export default function Snippet({
   needRequestPayload,
   useTextareaForResponse,
   defaultRequestPayload,
+  pulldownOptions,
   loginRequired,
   inClientOnly,
   isInLIFF = true,
-  isInMINI = true
+  isInMINI = true,
 }: SippetProps) {
   const [response, setResponse] = useState('')
   const [payload, setPayload] = useState(defaultRequestPayload || '')
@@ -72,64 +75,84 @@ export default function Snippet({
 
   return (
     <FilterContext.Consumer>
-      {
-        (filter) => 
-          ((filter === FilterTypes.LIFF && isInLIFF) || (filter === FilterTypes.MINI && isInMINI))
-          && <div className={styles.snippet}>
-          <div className={styles.head}>
-            <h2 className={styles.title}>
-              <span className={styles.text}>{apiName}</span>
-              <Tag>≥{version}</Tag>
-              {loginRequired && <Tag backgroundColor={primaryRed}>Login Required</Tag>} {inClientOnly && <Tag backgroundColor={primaryRed}>LINE Client only</Tag>}
-              {isInLIFF && <Tag backgroundColor={primaryBlue}>LIFF</Tag>}
-              {isInMINI && <Tag backgroundColor={primaryOrange}>MINI</Tag>}
-            </h2>
-            <div className={styles.action}>
-              <Button
-                appearance="outlined"
-                variant="primary"
-                size="S"
-                aria-disabled="false"
-                onClick={openDoc}>
-                DOCUMENT
-              </Button>{' '}
-              <Button
-                variant="primary"
-                size="S"
-                onClick={() => {
-                  callRunner()
-                }}>
-                RUN
-              </Button>
+      {(filter) =>
+        ((filter === FilterTypes.LIFF && isInLIFF) ||
+          (filter === FilterTypes.MINI && isInMINI)) && (
+          <div className={styles.snippet}>
+            <div className={styles.head}>
+              <h2 className={styles.title}>
+                <span className={styles.text}>{apiName}</span>
+                <Tag>≥{version}</Tag>
+                {loginRequired && (
+                  <Tag backgroundColor={primaryRed}>Login Required</Tag>
+                )}{' '}
+                {inClientOnly && (
+                  <Tag backgroundColor={primaryRed}>LINE Client only</Tag>
+                )}
+                {isInLIFF && <Tag backgroundColor={primaryBlue}>LIFF</Tag>}
+                {isInMINI && <Tag backgroundColor={primaryOrange}>MINI</Tag>}
+              </h2>
+              <div className={styles.action}>
+                <Button
+                  appearance="outlined"
+                  variant="primary"
+                  size="S"
+                  aria-disabled="false"
+                  onClick={openDoc}>
+                  DOCUMENT
+                </Button>{' '}
+                <Button
+                  variant="primary"
+                  size="S"
+                  onClick={() => {
+                    callRunner()
+                  }}>
+                  RUN
+                </Button>
+              </div>
             </div>
-          </div>
-          {needRequestPayload && (
-            <TextArea
-              label="Arguments"
-              helpText="Enter the request payload for API request"
-              value={payload}
-              onChange={(e) => setPayload(e?.currentTarget?.value)}
-              rows={4}
-            />
-          )}
-          {!hideResponse &&
-            (useTextareaForResponse ? (
-              <TextArea
-                label="Response"
-                helpText="Run this API to get the response"
-                value={response}
-                rows={4}
-                readonly={true}
-              />
+            {needRequestPayload && pulldownOptions ? (
+              <>
+                <Pulldown
+                  label="Arguments"
+                  helpText="Choose the request payload for API request"
+                  value={payload}
+                  onChange={(e) => setPayload(e.currentTarget.value)}
+                  options={pulldownOptions.map(({ label, value }) => ({
+                    label,
+                    value,
+                  }))}
+                />
+                <TextArea value={payload} readonly={true} rows={4} />
+              </>
             ) : (
-              <Input
-                label="Response"
-                helpText="Run this API to get the response"
-                readonly={true}
-                value={response}
+              <TextArea
+                label="Arguments"
+                helpText="Enter the request payload for API request"
+                value={payload}
+                onChange={(e) => setPayload(e?.currentTarget?.value)}
+                rows={4}
               />
-            ))}
-        </div>
+            )}
+            {!hideResponse &&
+              (useTextareaForResponse ? (
+                <TextArea
+                  label="Response"
+                  helpText="Run this API to get the response"
+                  value={response}
+                  rows={4}
+                  readonly={true}
+                />
+              ) : (
+                <Input
+                  label="Response"
+                  helpText="Run this API to get the response"
+                  readonly={true}
+                  value={response}
+                />
+              ))}
+          </div>
+        )
       }
     </FilterContext.Consumer>
   )
