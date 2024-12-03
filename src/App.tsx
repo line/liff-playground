@@ -4,14 +4,15 @@ import styles from './App.module.css'
 import Header from './components/Header'
 import Snippet from './components/Snippet'
 import Input from './components/Input'
-import { FilterContext, FilterTypes } from './Context'
+import { FilterContext, FilterType } from './Context'
 import qrCode from './qr-code.png'
 import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST } from './constants'
 
-const isMINI = new URLSearchParams(location.search).has('mini')
-const filter = isMINI ? FilterTypes.MINI : FilterTypes.LIFF
+type Props = {
+  filter: FilterType;
+};
 
-function App() {
+function App({ filter }: Props) {
   let isLoggedIn = false
   try {
     isLoggedIn = liff.isLoggedIn()
