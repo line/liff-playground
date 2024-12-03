@@ -4,7 +4,8 @@ import Input from './Input'
 import styles from './Snippet.module.css'
 import Tag from './Tag'
 import TextArea from './TextArea'
-import { FilterContext, FilterTypes } from '../Context'
+import { FilterContext } from '../Context'
+import { FilterTypes } from '../FilterTypes'
 import Pulldown from './Pulldown'
 
 interface SippetProps {
