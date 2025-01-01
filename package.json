@@ -15,7 +15,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@line/liff": "2.23.1",
+    "@line/liff": "2.25.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
