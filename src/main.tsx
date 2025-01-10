@@ -5,6 +5,7 @@ import { LiffCommonProfilePlugin } from '@line/liff-common-profile-plugin'
 import './main.css'
 import App from './App'
 import { FilterTypes } from './FilterTypes'
+import { AppContext } from './Context'
 
 const isMINI = new URLSearchParams(location.search).has('mini')
 const isPreviewMINI = new URLSearchParams(location.search).has('mini_preview')
@@ -39,7 +40,9 @@ liff
   .then(() => {
     ReactDOM.render(
       <React.StrictMode>
-        <App appUrl={appUrl} filter={filter} />
+        <AppContext.Provider value={{ filter, appId, appUrl }}>
+          <App />
+        </AppContext.Provider>
       </React.StrictMode>,
       document.getElementById('root')
     )
