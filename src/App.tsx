@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import liff from '@line/liff'
 import styles from './App.module.css'
 import Header from './components/Header'
@@ -8,26 +8,25 @@ import { FilterContext, FilterType } from './Context'
 import qrCode from './qr-code.png'
 import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST } from './constants'
 import { FilterTypes } from './FilterTypes'
+import { AppContext } from './Context'
 
-type Props = {
-  appUrl: string
-  filter: FilterType
-}
+function App() {
+  const { appUrl, filter } = useContext(AppContext)
 
-function App({ appUrl, filter }: Props) {
   let isLoggedIn = false
   try {
     isLoggedIn = liff.isLoggedIn()
   } catch (e) {
     console.log(e)
   }
+
   return (
-    <FilterContext.Provider value={filter}>
+    <>
       <Header />
       <div className={styles.container}>
         <div className={styles.liffIdBox}>
           <Input readonly value={`URL: ${appUrl}`} />
-          <img src={qrCode} className={styles.qrCode} />
+          <img src={QR_IMG_MAP[filter]} className={styles.qrCode} />
         </div>
         <h1>Client APIs</h1>
         {!isLoggedIn ? (
