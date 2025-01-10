@@ -4,9 +4,7 @@ import styles from './App.module.css'
 import Header from './components/Header'
 import Snippet from './components/Snippet'
 import Input from './components/Input'
-import { FilterContext, FilterType } from './Context'
-import qrCode from './qr-code.png'
-import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST } from './constants'
+import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST, QR_IMG_MAP } from './constants'
 import { FilterTypes } from './FilterTypes'
 import { AppContext } from './Context'
 
@@ -352,7 +350,7 @@ function App() {
           </>
         )}
       </div>
-    </FilterContext.Provider>
+    </>
   )
 }
 
