@@ -291,22 +291,70 @@ function App({ appUrl, filter }: Props) {
             return await liff.permanentLink.createUrlBy(url)
           }}
         />
-        <Snippet
-          apiName="liff.i18n.setLang"
-          version="2.21.0"
-          docUrl="https://developers.line.biz/ja/reference/liff/#i18n-set-lang"
-          needRequestPayload={true}
-          skipAutoRun={true}
-          hideResponse={true}
-          defaultRequestPayload={'en'}
-          runner={async (lang) => {
-            return await liff.i18n.setLang(lang)
-          }}
-        />
+        {(filter === FilterTypes.MINI ||
+          filter === FilterTypes.MINI_PREVIEW) && (
+          <>
+            <Snippet
+              apiName="liff.createShortcutOnHomeScreen"
+              version="2.23.0"
+              docUrl="https://developers.line.biz/en/reference/liff/#create-shortcut-on-home-screen"
+              needRequestPayload={true}
+              defaultRequestPayload={JSON.stringify(
+                {
+                  url: appUrl,
+                },
+                null,
+                4
+              )}
+              runner={async (payload) => {
+                const parsed = JSON.parse(payload)
+                await liff.createShortcutOnHomeScreen(parsed);
+              }}
+              skipAutoRun={true}
+              isInLIFF={false}
+            />
+            <Snippet
+              apiName="liff.$commonProfile.getDummy"
+              version="2.19.0"
+              docUrl="https://developers.line.biz/en/docs/partner-docs/quick-fill/overview/"
+              needRequestPayload={true}
+              defaultRequestPayload={JSON.stringify(
+                [
+                  [
+                    'family-name',
+                    'given-name',
+                    'family-name-kana',
+                    'given-name-kana',
+                    'sex-enum',
+                    'bday-year',
+                    'bday-month',
+                    'bday-day',
+                    'tel',
+                    'email',
+                    'postal-code',
+                    'address-level1',
+                    'address-level2',
+                    'address-level3',
+                    'address-level4',
+                  ],
+                  1,
+                ],
+                null,
+                4
+              )}
+              runner={async (p) => {
+                const payload = JSON.parse(p)
+                return await liff.$commonProfile.getDummy(...payload)
+              }}
+              inClientOnly={true}
+              skipAutoRun={true}
+              isInLIFF={false}
+            />
+          </>
+        )}
       </div>
     </FilterContext.Provider>
   )
 }
-
 
 export default App
