@@ -7,12 +7,14 @@ import Input from './components/Input'
 import { FilterContext, FilterType } from './Context'
 import qrCode from './qr-code.png'
 import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST } from './constants'
+import { FilterTypes } from './FilterTypes'
 
 type Props = {
-  filter: FilterType;
-};
+  appUrl: string
+  filter: FilterType
+}
 
-function App({ filter }: Props) {
+function App({ appUrl, filter }: Props) {
   let isLoggedIn = false
   try {
     isLoggedIn = liff.isLoggedIn()
@@ -24,10 +26,7 @@ function App({ filter }: Props) {
       <Header />
       <div className={styles.container}>
         <div className={styles.liffIdBox}>
-          <Input
-            readonly
-            value={`LIFF URL: https://liff.line.me/${import.meta.env.VITE_LIFF_ID.toString()}`}
-          />
+          <Input readonly value={`URL: ${appUrl}`} />
           <img src={qrCode} className={styles.qrCode} />
         </div>
         <h1>Client APIs</h1>
