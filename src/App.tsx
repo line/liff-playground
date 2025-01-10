@@ -22,10 +22,13 @@ function App() {
     <>
       <Header />
       <div className={styles.container}>
-        <div className={styles.applicationNotice}>
-          本「LINEミニアプリプレイグラウンド」は日本限定のサービスです。<br />
-          This “LINE MINI App Playground” is available only in Japan.
-        </div>
+        {filter === FilterTypes.MINI || filter === FilterTypes.MINI_PREVIEW ? (
+          <div className={styles.applicationNotice}>
+            本「LINEミニアプリプレイグラウンド」は日本限定のサービスです。
+            <br />
+            This “LINE MINI App Playground” is available only in Japan.
+          </div>
+        ) : null}
         <div className={styles.liffIdBox}>
           <Input readonly value={`URL: ${appUrl}`} />
           <img src={QR_IMG_MAP[filter]} className={styles.qrCode} />
@@ -227,7 +230,9 @@ function App() {
           docUrl="https://developers.line.biz/en/reference/liff/#share-target-picker"
           needRequestPayload={true}
           hideResponse={true}
-          defaultRequestPayload={SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST[0].value}
+          defaultRequestPayload={
+            SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST[0].value
+          }
           pulldownOptions={SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST}
           skipAutoRun={true}
           runner={async (options) => {
@@ -309,7 +314,7 @@ function App() {
               )}
               runner={async (payload) => {
                 const parsed = JSON.parse(payload)
-                await liff.createShortcutOnHomeScreen(parsed);
+                await liff.createShortcutOnHomeScreen(parsed)
               }}
               skipAutoRun={true}
               isInLIFF={false}
