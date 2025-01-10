@@ -22,6 +22,10 @@ function App() {
     <>
       <Header />
       <div className={styles.container}>
+        <div className={styles.applicationNotice}>
+          本「LINEミニアプリプレイグラウンド」は日本限定のサービスです。<br />
+          This “LINE MINI App Playground” is available only in Japan.
+        </div>
         <div className={styles.liffIdBox}>
           <Input readonly value={`URL: ${appUrl}`} />
           <img src={QR_IMG_MAP[filter]} className={styles.qrCode} />
