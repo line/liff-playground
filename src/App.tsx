@@ -1,33 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import liff from '@line/liff'
 import styles from './App.module.css'
 import Header from './components/Header'
 import Snippet from './components/Snippet'
 import Input from './components/Input'
-import { FilterContext, FilterTypes } from './Context'
-import qrCode from './qr-code.png'
-import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST } from './constants'
-
-const isMINI = new URLSearchParams(location.search).has('mini')
-const filter = isMINI ? FilterTypes.MINI : FilterTypes.LIFF
+import { SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST, QR_IMG_MAP } from './constants'
+import { FilterTypes } from './FilterTypes'
+import { AppContext } from './Context'
 
 function App() {
+  const { appUrl, filter } = useContext(AppContext)
+
   let isLoggedIn = false
   try {
     isLoggedIn = liff.isLoggedIn()
   } catch (e) {
     console.log(e)
   }
+
   return (
-    <FilterContext.Provider value={filter}>
+    <>
       <Header />
       <div className={styles.container}>
+        {filter === FilterTypes.MINI || filter === FilterTypes.MINI_PREVIEW ? (
+          <div className={styles.applicationNotice}>
+            本「LINEミニアプリプレイグラウンド」は日本限定のサービスです。
+            <br />
+            This “LINE MINI App Playground” is available only in Japan.
+          </div>
+        ) : null}
         <div className={styles.liffIdBox}>
-          <Input
-            readonly
-            value={`LIFF URL: https://liff.line.me/${import.meta.env.VITE_LIFF_ID.toString()}`}
-          />
-          <img src={qrCode} className={styles.qrCode} />
+          <Input readonly value={`URL: ${appUrl}`} />
+          <img src={QR_IMG_MAP[filter]} className={styles.qrCode} />
         </div>
         <h1>Client APIs</h1>
         {!isLoggedIn ? (
@@ -226,7 +230,9 @@ function App() {
           docUrl="https://developers.line.biz/en/reference/liff/#share-target-picker"
           needRequestPayload={true}
           hideResponse={true}
-          defaultRequestPayload={SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST[0].value}
+          defaultRequestPayload={
+            SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST[0].value
+          }
           pulldownOptions={SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST}
           skipAutoRun={true}
           runner={async (options) => {
@@ -291,22 +297,70 @@ function App() {
             return await liff.permanentLink.createUrlBy(url)
           }}
         />
-        <Snippet
-          apiName="liff.i18n.setLang"
-          version="2.21.0"
-          docUrl="https://developers.line.biz/ja/reference/liff/#i18n-set-lang"
-          needRequestPayload={true}
-          skipAutoRun={true}
-          hideResponse={true}
-          defaultRequestPayload={'en'}
-          runner={async (lang) => {
-            return await liff.i18n.setLang(lang)
-          }}
-        />
+        {(filter === FilterTypes.MINI ||
+          filter === FilterTypes.MINI_PREVIEW) && (
+          <>
+            <Snippet
+              apiName="liff.createShortcutOnHomeScreen"
+              version="2.23.0"
+              docUrl="https://developers.line.biz/en/reference/liff/#create-shortcut-on-home-screen"
+              needRequestPayload={true}
+              defaultRequestPayload={JSON.stringify(
+                {
+                  url: appUrl,
+                },
+                null,
+                4
+              )}
+              runner={async (payload) => {
+                const parsed = JSON.parse(payload)
+                await liff.createShortcutOnHomeScreen(parsed)
+              }}
+              skipAutoRun={true}
+              isInLIFF={false}
+            />
+            <Snippet
+              apiName="liff.$commonProfile.getDummy"
+              version="2.19.0"
+              docUrl="https://developers.line.biz/en/docs/partner-docs/quick-fill/overview/"
+              needRequestPayload={true}
+              defaultRequestPayload={JSON.stringify(
+                [
+                  [
+                    'family-name',
+                    'given-name',
+                    'family-name-kana',
+                    'given-name-kana',
+                    'sex-enum',
+                    'bday-year',
+                    'bday-month',
+                    'bday-day',
+                    'tel',
+                    'email',
+                    'postal-code',
+                    'address-level1',
+                    'address-level2',
+                    'address-level3',
+                    'address-level4',
+                  ],
+                  1,
+                ],
+                null,
+                4
+              )}
+              runner={async (p) => {
+                const payload = JSON.parse(p)
+                return await liff.$commonProfile.getDummy(...payload)
+              }}
+              inClientOnly={true}
+              skipAutoRun={true}
+              isInLIFF={false}
+            />
+          </>
+        )}
       </div>
-    </FilterContext.Provider>
+    </>
   )
 }
-
 
 export default App

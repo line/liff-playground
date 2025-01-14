@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.left {
+  flex: 1;
+}
+
 .left a {
   text-decoration: none;
   color: #000;
@@ -40,5 +44,8 @@
 @media only screen and (max-width: 768px) {
   .gitHubButton {
     display: none;
+  }
+  .right {
+    flex-basis: 100px;
   }
 }

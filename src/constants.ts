@@ -1,4 +1,6 @@
-const base = new URL(location.href).origin;
+import { FilterTypes } from "./FilterTypes"
+
+const base = new URL(location.href).origin
 export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
   {
     label: 'text',
@@ -54,3 +56,9 @@ export const SHARE_TARGET_PICKER_FIXED_ARGUMENT_LIST = [
   label,
   value: JSON.stringify(value, null, 4),
 }))
+
+export const QR_IMG_MAP = {
+  [FilterTypes.LIFF]: `${base}/assets/qr_liff.png`,
+  [FilterTypes.MINI]: `${base}/assets/qr_mini.png`,
+  [FilterTypes.MINI_PREVIEW]: `${base}/assets/qr_mini_preview.png`,
+}

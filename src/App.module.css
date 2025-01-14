@@ -21,6 +21,11 @@ body {
   height: auto;
 }
 
+.applicationNotice {
+  color: #777777;
+  font-size: 15px;
+}
+
 @media only screen and (max-width: 375px) {
   .container {
     width: auto;

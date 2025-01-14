@@ -4,7 +4,8 @@ import Input from './Input'
 import styles from './Snippet.module.css'
 import Tag from './Tag'
 import TextArea from './TextArea'
-import { FilterContext, FilterTypes } from '../Context'
+import { AppContext } from '../Context'
+import { FilterTypes } from '../FilterTypes'
 import Pulldown from './Pulldown'
 
 interface SippetProps {
@@ -73,8 +74,8 @@ export default function Snippet({
   }, [skipAutoRun, callRunner])
 
   return (
-    <FilterContext.Consumer>
-      {(filter) =>
+    <AppContext.Consumer>
+      {({ filter }) =>
         ((filter === FilterTypes.LIFF && isInLIFF) ||
           (filter === FilterTypes.MINI && isInMINI)) && (
           <div className={styles.snippet}>
@@ -153,6 +154,6 @@ export default function Snippet({
           </div>
         )
       }
-    </FilterContext.Consumer>
+    </AppContext.Consumer>
   )
 }
