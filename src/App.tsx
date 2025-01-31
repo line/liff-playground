@@ -29,8 +29,10 @@ function App() {
             This “LINE MINI App Playground” is available only in Japan.
           </div>
         ) : null}
-        <div className={styles.liffIdBox}>
-          <Input readonly value={`URL: ${appUrl}`} />
+        <div className={styles.appInfo}>
+          <div className={styles.liffIdBox}>
+            <Input readonly value={`URL: ${appUrl}`} />
+          </div>
           <img src={QR_IMG_MAP[filter]} className={styles.qrCode} />
         </div>
         <h1>Client APIs</h1>
