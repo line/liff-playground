@@ -8,12 +8,15 @@ body {
   margin: 20px auto;
 }
 
-.liffIdBox {
+.appInfo {
   margin: 40px 0;
-  width: 400px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.liffIdBox {
+  max-width: 400px;
 }
 
 .qrCode {
@@ -32,12 +35,3 @@ body {
     padding: 0 15px;
   }
 }
-
-
-@media only screen and (max-width: 480px) {
-  .liffIdBox {
-    width: auto;
-    display: block;
-  }
-}
-
