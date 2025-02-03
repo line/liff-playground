@@ -183,28 +183,30 @@ function App() {
             return liff.permanentLink.createUrl()
           }}
         />
-        <Snippet
-          apiName="liff.sendMessages"
-          version="1.0"
-          docUrl="https://developers.line.biz/en/reference/liff/#send-messages"
-          needRequestPayload={true}
-          hideResponse={true}
-          defaultRequestPayload={JSON.stringify(
-            [
-              {
-                type: 'text',
-                text: 'Hello, World!',
-              },
-            ],
-            null,
-            4
-          )}
-          skipAutoRun={true}
-          runner={async (messages) => {
-            return await liff.sendMessages(JSON.parse(messages))
-          }}
-          inClientOnly={true}
-        />
+        {filter === FilterTypes.LIFF && (
+          <Snippet
+            apiName="liff.sendMessages"
+            version="1.0"
+            docUrl="https://developers.line.biz/en/reference/liff/#send-messages"
+            needRequestPayload={true}
+            hideResponse={true}
+            defaultRequestPayload={JSON.stringify(
+              [
+                {
+                  type: 'text',
+                  text: 'Hello, World!',
+                },
+              ],
+              null,
+              4
+            )}
+            skipAutoRun={true}
+            runner={async (messages) => {
+              return await liff.sendMessages(JSON.parse(messages))
+            }}
+            inClientOnly={true}
+          />
+        )}
         <Snippet
           apiName="liff.openWindow"
           version="1.0"
