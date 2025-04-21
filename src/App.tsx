@@ -71,11 +71,11 @@ function App() {
           }}
         />
         <Snippet
-          apiName="liff.getLanguage()"
+          apiName="liff.getAppLanguage()"
           version="2.0"
-          docUrl="https://developers.line.biz/en/reference/liff/#get-language"
+          docUrl="https://developers.line.biz/en/reference/liff/#get-app-language"
           runner={async () => {
-            return liff.getLanguage()
+            return liff.getAppLanguage()
           }}
         />
         <Snippet
