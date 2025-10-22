@@ -15,7 +15,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@line/liff": "2.25.1",
+    "@line/liff": "2.27.2",
     "@line/liff-common-profile-plugin": "0.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -26,13 +26,17 @@
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "@vitejs/plugin-react": "^1.0.7",
-    "devcert": "1.2.0",
+    "devcert": "1.2.2",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2",
-    "typescript": "^4.4.4",
+    "typescript": "^5.9.3",
     "vite": "^2.7.2"
+  },
+  "resolutions": {
+    "@types/minimatch": "^5",
+    "glob": "8.1.0"
   }
 }
