@@ -175,6 +175,17 @@ function App() {
           }}
         />
         <Snippet
+          apiName="liff.requestFriendship()"
+          version="2.28.0"
+          docUrl="https://developers.line.biz/en/reference/liff/#request-friendship"
+          skipAutoRun={true}
+          loginRequired={true}
+          useTextareaForResponse={true}
+          runner={async () => {
+            return JSON.stringify(await liff.requestFriendship(), null, 4)
+          }}
+        />
+        <Snippet
           apiName="liff.permanentLink.setExtraQueryParam()"
           version="2.0"
           docUrl="https://developers.line.biz/en/reference/liff/#permanent-linke-set-extra-query-param"
