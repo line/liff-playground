@@ -13,12 +13,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn
+          npm ci
 
       - name: Run lint task
         run: |
-          yarn lint
+          npm run lint
 
       - name: Run build task
         run: |
-          yarn build
+          npm run build

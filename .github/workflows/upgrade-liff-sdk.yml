@@ -15,12 +15,16 @@ jobs:
 
       - name: Check and Update dependencies
         run: |
-          npx -p npm-check-updates ncu -u @line/liff
-          yarn
+          npx -p npm-check-updates@23 ncu -u @line/liff
+          npm install --package-lock-only
+
+      - name: Install dependencies
+        run: |
+          npm ci
 
       - name: Run build task
         run: |
-          yarn build
+          npm run build
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@18f7dc018cc2cd597073088f7c7591b9d1c02672 # v3.14.0
