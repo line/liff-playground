@@ -38,7 +38,7 @@ This section shows two ways to run it on local and deploy it on a server.
 
 To run the LIFF Playground on local, first install the dependent packages. Then run the application.
 
-This project requires npm 11.10 or later, which is bundled with the Node.js version specified in `.nvmrc`.
+This project requires npm 11.16 or later, which is bundled with the Node.js version specified in `.nvmrc`.
 
 ```bash
 $ npm ci

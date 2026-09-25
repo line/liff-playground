@@ -17,9 +17,13 @@
   "devEngines": {
     "packageManager": {
       "name": "npm",
-      "version": ">=11.10.0",
+      "version": ">=11.16.0",
       "onFail": "error"
     }
+  },
+  "allowScripts": {
+    "esbuild": false,
+    "fsevents": false
   },
   "dependencies": {
     "@line/liff": "2.28.0",
