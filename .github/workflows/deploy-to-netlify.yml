@@ -16,11 +16,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn
+          npm ci
 
       - name: Run build task
         run: |
-          yarn build
+          npm run build
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2

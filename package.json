@@ -14,6 +14,17 @@
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11.16.0",
+      "onFail": "error"
+    }
+  },
+  "allowScripts": {
+    "esbuild": false,
+    "fsevents": false
+  },
   "dependencies": {
     "@line/liff": "2.28.0",
     "@line/liff-common-profile-plugin": "0.1.0",
@@ -35,7 +46,7 @@
     "typescript": "^5.9.3",
     "vite": "^2.7.2"
   },
-  "resolutions": {
+  "overrides": {
     "@types/minimatch": "^5",
     "glob": "8.1.0"
   }

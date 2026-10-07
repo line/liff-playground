@@ -38,17 +38,19 @@ This section shows two ways to run it on local and deploy it on a server.
 
 To run the LIFF Playground on local, first install the dependent packages. Then run the application.
 
+This project requires npm 11.16 or later, which is bundled with the Node.js version specified in `.nvmrc`.
+
 ```bash
-$ yarn
-$ yarn dev
+$ npm ci
+$ npm run dev
 ```
 
 This will start it up. When you access the URL shown in the terminal, you can see the LIFF Playground.
 
-Incidentally, the LIFF application endpoint requires HTTPS. To start the local server with HTTPS, run the following command instead of `yarn dev`.
+Incidentally, the LIFF application endpoint requires HTTPS. To start the local server with HTTPS, run the following command instead of `npm run dev`.
 
 ```bash
-$ yarn dev:https
+$ npm run dev:https
 ```
 
 ### Deploy to a server
