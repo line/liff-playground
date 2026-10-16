@@ -26,7 +26,7 @@
     "fsevents": false
   },
   "dependencies": {
-    "@line/liff": "2.28.0",
+    "@line/liff": "2.31.2",
     "@line/liff-common-profile-plugin": "0.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
